@@ -231,6 +231,7 @@ section>.wrap,header.hero>.wrap,footer>.wrap{position:relative;z-index:1}
 .queue .acts{display:flex;gap:8px;margin-top:10px}
 
 .howto ol{margin:0;padding-left:22px;display:grid;gap:14px}.howto li{padding-left:4px}.howto .btn{margin-top:6px}.note{font-size:13px;color:var(--pencil);margin-top:6px}
+.consent{margin-top:18px;background:var(--cream);border:2px dashed var(--pink);border-radius:20px;padding:16px 18px;font-size:14px}.consent>b{font-family:var(--hand);font-size:20px;color:var(--pink);font-weight:600}.consent ul{margin:8px 0 0;padding-left:20px;display:grid;gap:6px}.consent .ja{margin-top:10px;font-size:13px;color:var(--pencil);font-family:var(--hand-ja)}
 footer{padding-block:48px}
 footer .wrap{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
 footer .me{width:110px;height:110px;border-radius:50%;overflow:hidden;border:5px solid var(--white)}
@@ -391,10 +392,19 @@ footer .tl{margin-top:8px;font-family:var(--hand);font-weight:700;color:var(--pi
             <ol>
               <li><b>Draw here</b>, or use any picture or photo you made.</li>
               <li><b>Save it.</b> <button class="btn ghost small" type="button" id="saveBtn">Save my drawing</button></li>
-              <li><b>Send it to Daisy</b> <span id="igLine">by Instagram DM</span>, with one sentence about what you love about Japan and your nickname · country.</li>
+              <li><b>Send it to Daisy</b> <span id="igLine">by Instagram DM</span>, with one sentence about what you love about Japan and your nickname · country. Please read the note below first.</li>
             </ol>
             <p class="status" id="status" role="status"></p>
-            <p class="note">Daisy checks every picture before it goes into the gallery.</p>
+            <div class="consent" role="note" aria-label="Before you send">
+              <b>Before you send <span class="fl" data-fl="pink"></span></b>
+              <ul>
+                <li>When you send a picture to Daisy, it <b>may be shared in the Art gallery on this website</b>, together with your sentence and nickname.</li>
+                <li>Daisy checks every picture first. Not every picture will be shared.</li>
+                <li>Please send only <b>your own work</b>. Use a nickname, and don't include your full name, address, school name or a photo of your face.</li>
+                <li><b>Under 18?</b> Please ask a parent or guardian for permission before you send.</li>
+                <li>Changed your mind? Send Daisy a message any time, and your picture will be taken down.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
