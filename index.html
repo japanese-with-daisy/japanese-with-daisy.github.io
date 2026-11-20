@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Japanese with Daisy: learn Japanese, cultivate your mind, and bloom as only you can.">
+<meta property="og:title" content="Japanese with Daisy">
+<meta property="og:description" content="Learn Japanese. Cultivate Your Mind. Bloom as Only You Can.">
+<meta property="og:image" content="img/square.jpg">
+<link rel="icon" href="img/logo.jpg">
+<script>
+/* ===== Settings: edit these two lines ===== */
+window.SITE = {
+  GA_ID: "",          // Google Analytics ID, e.g. "G-ABC123XYZ". Leave empty to turn analytics off.
+  INSTAGRAM_URL: ""   // e.g. "https://www.instagram.com/your_account/"
+};
+if (window.SITE.GA_ID) {
+  var g=document.createElement("script");g.async=true;g.src="https://www.googletagmanager.com/gtag/js?id="+window.SITE.GA_ID;document.head.appendChild(g);
+  window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag("js",new Date());gtag("config",window.SITE.GA_ID);
+}
+</script>
+</body>
+</html>
+<title>Japanese with Daisy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+<style>
+body{margin:0}[hidden]{display:none!important}
+/* Layout: a pastel notebook in pages — a mint cover page for the mission, then one page per topic. Hand-lettered headings, marker underlines and Daisy's own five-petal mark. Single light look by design. */
+:root{
+  color-scheme:light;
+  --mint:#d4ecd9;
+  --mint-2:#e8f5eb;
+  --mint-deep:#8cc5a1;
+  --mint-ink:#3f6e55;
+  --white:#ffffff;
+  --sky:#dcf1f7;
+  --sky-deep:#8ccbe0;
+  --cream:#fdf8e4;
+  --yellow:#f7e58a;
+  --pink:#ef7fa8;
+  --blush:#f9d3df;
+  --ink:#4c524e;
+  --pencil:#7a7d7b;
+  --line:#e3e9e3;
+  --danger:#c4466b;
+  --hand:"Fredoka", "Arial Rounded MT Bold", "Zen Maru Gothic", sans-serif;
+  --hand-ja:"Klee One", "Zen Maru Gothic", sans-serif;
+  --body:"Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  --sparkle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' opacity='.85'%3E%3Cpath d='M30 20v16M22 28h16M24 22l12 12M36 22L24 34'/%3E%3Cpath d='M160 70v12M154 76h12'/%3E%3Cpath d='M90 170v16M82 178h16M84 172l12 12M96 172l-12 12'/%3E%3Cpath d='M195 175v10M190 180h10'/%3E%3Ccircle cx='120' cy='30' r='4'/%3E%3Ccircle cx='60' cy='110' r='3.5'/%3E%3Ccircle cx='190' cy='120' r='4'/%3E%3Ccircle cx='20' cy='190' r='3'/%3E%3Ccircle cx='140' cy='205' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+body{background:var(--white);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:600}
+.pillar .t,.bubble,.hero .tag,.promise-card .t,.art .q,footer .promise{font-weight:500}
+p{margin:0}
+a{color:var(--mint-ink)}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:8px}
+img{max-width:100%;display:block}
+.mk{background:linear-gradient(transparent 62%, var(--c, var(--yellow)) 62%, var(--c, var(--yellow)) 88%, transparent 88%);padding:0 2px}
+.mk.p{--c:var(--blush)}.mk.b{--c:#c8e3f5}.mk.g{--c:#cdeed6}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--white)}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:10px 20px;padding-block:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--hand);font-weight:700;font-size:21px;color:var(--pink)}
+.brand img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.brand .w{color:var(--sky-deep);font-size:16px}
+.brand .d{color:#e2b552}
+.links{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.links a{text-decoration:none;color:var(--pencil);font-weight:500;font-size:14px;padding:4px 12px;border-radius:999px}
+.links a:hover{color:var(--pink)}
+.links a[aria-current="page"]{background:var(--mint);color:var(--mint-ink)}
+@media (max-width:700px){nav.top .wrap{gap:6px;padding-block:8px}.brand{font-size:19px}.brand img{width:38px;height:38px}.links{flex-wrap:nowrap;overflow-x:auto;margin-left:0;width:100%;scrollbar-width:none;-webkit-overflow-scrolling:touch}.links::-webkit-scrollbar{display:none}.links a{white-space:nowrap;flex:none}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:999px;padding:11px 22px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--pink);color:var(--white);box-shadow:0 4px 0 #d9638f}
+.btn.ghost{background:var(--white);color:var(--mint-ink);box-shadow:inset 0 0 0 2px var(--mint-deep)}
+.btn.ok{background:var(--mint-deep);color:var(--white)}
+.btn.small{padding:7px 16px;font-size:14px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* sections */
+section{padding-block:72px}
+.bg-mint{background:var(--mint) var(--sparkle) repeat}
+.bg-sky{background:var(--sky)}
+.bg-cream{background:var(--cream)}
+.bg-white{background:var(--white)}
+.head{margin-bottom:36px;max-width:720px}
+.head h2{font-family:var(--hand);font-size:clamp(34px,5vw,54px);line-height:1.15;color:var(--pencil)}
+.head .ja{font-family:var(--hand-ja);color:var(--pencil);margin-top:6px}
+section,header.hero,footer{position:relative;overflow:hidden}
+section>.wrap,header.hero>.wrap,footer>.wrap{position:relative;z-index:1}
+.deco{position:absolute;pointer-events:none;z-index:0}
+.deco svg{width:100%;height:100%;display:block}
+.fl{display:inline-block;width:1em;height:1em;vertical-align:-.12em}
+.fl svg{width:100%;height:100%;display:block}
+@media (prefers-reduced-motion:no-preference){.deco.spin svg{animation:twirl 14s ease-in-out infinite}}
+@keyframes twirl{50%{transform:rotate(18deg) scale(1.05)}}
+@media (max-width:700px){.deco.hide-sm{display:none}}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;padding-block:56px 64px}
+.hero h1{font-family:var(--hand);color:var(--pencil);font-size:clamp(44px,6.6vw,82px);line-height:1.08}
+.hero h1 .name{color:var(--ink)}
+.hero .tag{margin-top:22px;font-family:var(--hand);font-size:clamp(20px,2.4vw,27px);color:var(--ink);line-height:1.5}
+.hero .ja{margin-top:10px;font-family:var(--hand-ja);color:var(--pencil)}
+.portrait{position:relative;justify-self:center;width:min(100%,440px)}
+.portrait .frame{border-radius:220px 220px 32px 32px;overflow:hidden;border:8px solid var(--white);box-shadow:0 18px 40px rgba(63,110,85,.18);background:var(--cream);aspect-ratio:3/4}
+.portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:30% 20%}
+.badge{position:absolute;left:-22px;bottom:34px;width:118px;height:118px;border-radius:50%;border:5px solid var(--white);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.1);transform:rotate(-8deg)}
+.badge img{width:100%;height:100%;object-fit:cover}
+.bubble{position:absolute;right:-6px;top:26px;background:var(--white);border-radius:22px;padding:10px 16px;font-family:var(--hand);font-size:19px;color:var(--pink);box-shadow:0 6px 16px rgba(0,0,0,.08);transform:rotate(4deg)}
+@media (max-width:780px){.hero .wrap{grid-template-columns:1fr;padding-block:36px 48px}.portrait{width:min(100%,320px);order:-1}.badge{width:88px;height:88px;left:-10px}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.split > *{min-width:0}
+.shot{border-radius:28px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.08)}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+
+/* mission */
+.pillars{display:grid;gap:16px}
+.pillar{background:var(--white);border-radius:22px;padding:18px 22px}
+.pillar .t{font-family:var(--hand);font-size:25px;color:var(--ink);line-height:1.4}
+.pillar .ja{margin-top:4px;color:var(--pencil);font-size:14px;font-family:var(--hand-ja)}
+.promise-card{margin-top:24px;background:var(--white);border:2px dashed var(--yellow);border-radius:24px;padding:20px 24px}
+.promise-card .t{font-family:var(--hand);font-size:24px;color:var(--pink)}
+.explore{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+.explore a{display:flex;align-items:center;gap:12px;background:var(--white);border-radius:20px;padding:14px 16px;text-decoration:none;color:var(--ink);font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(0,0,0,.05);min-width:0}
+.explore a .fl{font-size:28px;flex:none}
+.explore a small{display:block;font-weight:400;color:var(--pencil);font-size:12px;line-height:1.4}
+@media (max-width:820px){.explore{grid-template-columns:repeat(2,1fr)}}
+
+/* about */
+.facts{display:grid;gap:14px}
+.fact{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.fact .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--hand);font-weight:700;font-size:20px;color:var(--white)}
+.fact b{display:block;font-weight:700}
+.fact span{color:var(--pencil);font-size:14px}
+
+/* themes */
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.theme{background:var(--white);border-radius:24px;padding:22px 20px;min-width:0}
+.theme .ic{font-size:28px;line-height:1}
+.theme h3{font-weight:700;font-size:16px;margin-top:10px;line-height:1.4}
+.theme p{margin-top:8px;font-size:14px;color:var(--pencil)}
+
+/* curriculum */
+.cur{display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:start}
+.cur > *{min-width:0}
+.cur .photo{border-radius:28px;overflow:hidden;border:6px solid var(--white);box-shadow:0 12px 30px rgba(0,0,0,.08);aspect-ratio:3/4}
+.cur .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.tracks{display:grid;gap:14px}
+.track{background:var(--white);border-radius:22px;padding:20px 22px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+.track .lvl{grid-row:span 2;align-self:start;font-family:var(--hand);font-weight:700;font-size:15px;color:var(--white);padding:4px 12px;border-radius:999px}
+.track h3{font-weight:700;font-size:18px}
+.track ul{margin:0;padding-left:18px;font-size:14px;color:var(--pencil)}
+@media (max-width:820px){.cur{grid-template-columns:1fr}.cur .photo{max-width:200px;aspect-ratio:1;border-radius:50%;margin:0 auto}.cur .photo img{object-position:55% 25%}.track{grid-template-columns:1fr}.track .lvl{grid-row:auto;justify-self:start}}
+.kanji-path{margin-top:56px}
+.kanji-path h3{font-family:var(--hand);font-size:32px;color:var(--pencil)}
+.kanji-path .sub{color:var(--pencil);font-size:14px}
+.kgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
+.lesson{border-radius:18px;padding:12px 14px;background:var(--white);min-width:0}
+.lesson .n{font-size:12px;color:var(--pencil);font-variant-numeric:tabular-nums}
+.lesson .t{font-weight:700;font-size:13px;line-height:1.4}
+.lesson .k{font-family:var(--hand-ja);font-size:22px;letter-spacing:.1em;margin-top:4px;color:var(--mint-ink);word-break:break-all}
+@media (max-width:900px){.kgrid{grid-template-columns:repeat(2,1fr)}}
+
+/* gallery page */
+.gal-head{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-bottom:32px}
+.gal-head .me{width:116px;height:116px;border-radius:50%;overflow:hidden;border:5px solid var(--white);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.gal-head .me img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
+.gal-head h2{font-family:var(--hand);font-size:clamp(32px,4.8vw,52px);color:var(--pencil);line-height:1.15}
+.gal-head .ja{font-family:var(--hand-ja);color:var(--pencil);margin-top:4px}
+@media (max-width:600px){.gal-head{grid-template-columns:1fr}.gal-head .me{width:92px;height:92px}}
+.gallery{columns:3 250px;column-gap:18px}
+.art{break-inside:avoid;margin:0 0 18px;background:var(--white);border-radius:20px;padding:10px 10px 16px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.gallery .art:nth-child(3n+1){transform:rotate(-.8deg)}.gallery .art:nth-child(3n+2){transform:rotate(.6deg)}
+.art img{width:100%;border-radius:12px;background:#fff}
+.art figcaption{padding:12px 6px 0}
+.art .q{font-family:var(--hand);font-size:18px;line-height:1.45;color:var(--ink)}
+.art .who{margin-top:8px;font-size:13px;color:var(--pencil);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.linkbtn{font:inherit;font-size:12px;border:none;background:none;color:var(--danger);cursor:pointer;padding:0}
+.empty{border:2px dashed var(--mint-deep);border-radius:26px;padding:44px 24px;text-align:center;color:var(--pencil);background:var(--white)}
+.empty b{display:block;font-family:var(--hand);font-weight:400;font-size:28px;color:var(--ink);margin-bottom:6px}
+
+.panel{background:var(--white);border-radius:28px;padding:26px;box-shadow:0 10px 28px rgba(0,0,0,.06)}
+.panel h3{font-family:var(--hand);font-size:30px;color:var(--pencil);line-height:1.2}
+.panel .ja{font-family:var(--hand-ja);color:var(--pencil);font-size:14px}
+.send{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:26px;margin-top:20px;align-items:start}
+@media (max-width:860px){.send{grid-template-columns:1fr}}
+.modes{display:inline-flex;background:var(--mint-2);border-radius:999px;padding:4px;gap:4px}
+.modes button{border:none;background:none;font:inherit;font-size:14px;font-weight:700;color:var(--mint-ink);padding:6px 16px;border-radius:999px;cursor:pointer}
+.modes button[aria-pressed="true"]{background:var(--white);box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.drop{margin-top:12px;border:2px dashed var(--mint-deep);border-radius:20px;aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:18px;background:var(--mint-2);cursor:pointer;color:var(--mint-ink);position:relative;overflow:hidden}
+.drop.over{background:var(--mint)}
+.drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+.drop .hint b{display:block;font-family:var(--hand);font-size:24px}
+.drop .hint span{font-size:13px;color:var(--pencil)}
+#canvas{width:100%;aspect-ratio:4/3;border-radius:16px;background:#ffffff;touch-action:none;cursor:crosshair;box-shadow:inset 0 0 0 2px var(--mint-deep);margin-top:0;display:block}
+.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.swatch{width:26px;height:26px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
+.swatch[aria-pressed="true"]{box-shadow:0 0 0 2.5px var(--pink)}
+.tools .sep{width:1px;height:22px;background:var(--line)}
+.tbtn{border:1.5px solid var(--line);background:var(--white);color:var(--ink);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
+.tbtn[aria-pressed="true"]{background:var(--mint-deep);color:var(--white);border-color:var(--mint-deep)}
+.form{display:grid;gap:10px}
+.form label{font-size:14px;font-weight:700}
+.form input,.form textarea{width:100%;font:inherit;font-size:15px;padding:10px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--white);color:var(--ink)}
+.form textarea{min-height:90px;resize:vertical}
+.ideas{display:flex;flex-wrap:wrap;gap:6px}
+.ideas button{font:inherit;font-size:13px;border:1.5px dashed var(--pink);background:var(--white);color:var(--pink);border-radius:999px;padding:3px 11px;cursor:pointer}
+.status{font-size:14px;min-height:1.5em;color:var(--mint-ink)}
+.status.err{color:var(--danger)}
+.mine{margin-top:22px;display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center;background:var(--cream);border-radius:20px;padding:14px}
+.mine img{width:96px;height:96px;object-fit:cover;border-radius:14px;background:#fff}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px}
+.pill.pending{background:var(--yellow);color:#6b5a12}
+.pill.approved{background:var(--mint);color:var(--mint-ink)}
+.pill.declined{background:var(--blush);color:#8a3550}
+
+.review{background:var(--white);border:2px solid var(--yellow);border-radius:28px;padding:22px 24px;margin-bottom:36px}
+.review .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.review h3{font-family:var(--hand);font-size:28px;color:var(--ink)}
+.review .only{font-size:13px;color:var(--pencil)}
+.queue{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:16px}
+.queue .art{box-shadow:none;border:1.5px solid var(--line)}
+.queue .acts{display:flex;gap:8px;margin-top:10px}
+
+.howto ol{margin:0;padding-left:22px;display:grid;gap:14px}.howto li{padding-left:4px}.howto .btn{margin-top:6px}.note{font-size:13px;color:var(--pencil);margin-top:6px}
+footer{padding-block:48px}
+footer .wrap{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+footer .me{width:110px;height:110px;border-radius:50%;overflow:hidden;border:5px solid var(--white)}
+footer .me img{width:100%;height:100%;object-fit:cover}
+footer .promise{font-family:var(--hand);font-size:clamp(19px,2.4vw,25px);color:var(--ink);line-height:1.4;max-width:50ch}
+footer .tl{margin-top:8px;font-family:var(--hand);font-weight:700;color:var(--pink);font-size:19px}
+@media (max-width:600px){footer .wrap{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#home"><img src="img/logo.jpg" alt="">Japanese <span class="w">with</span> <span class="d">Daisy</span></a>
+    <div class="links">
+      <a href="#home" data-link="home">Home</a><a href="#about" data-link="about">About me</a><a href="#themes" data-link="themes">Themes</a><a href="#curriculum" data-link="curriculum">Curriculum</a><a href="#gallery" data-link="gallery">Art gallery</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- HOME: mission only -->
+<div class="view" data-view="home">
+  <header class="hero bg-mint">
+    <div class="wrap">
+      <div>
+        <h1>Hi, everyone!<br>I'm <span class="name mk">Daisy</span> <span class="fl" data-fl="white"></span></h1>
+        <p class="tag">Learn Japanese. <span class="mk b">Cultivate your mind.</span><br><span class="mk p">Bloom as only you can.</span></p>
+        <p class="ja">日本語を学ぼう。心を耕そう。あなただけの花を咲かせよう。</p>
+      </div>
+      <div class="portrait">
+        <div class="frame"><img src="img/yellow.jpg" alt="Daisy smiling in a light blue sweater"></div>
+        <div class="badge"><img src="img/logo.jpg" alt="Japanese with Daisy logo"></div>
+        <div class="bubble">よろしくね！ <span class="fl" data-fl="pink"></span></div>
+      </div>
+    </div>
+  </header>
+  <section class="bg-cream">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="head" style="margin-bottom:22px"><h2>My mission is…</h2><p class="ja">すべての人に、日本語を学び、新しい価値観に出会い、人生に彩りを加える機会を。</p></div>
+          <div class="pillars">
+            <div class="pillar"><div class="t">① To give everyone the <span class="mk p">opportunity</span> to learn Japanese</div><p class="ja">新しい言語を学び、知識を身につける。</p></div>
+            <div class="pillar"><div class="t">② Discover <span class="mk b">new perspectives</span></div><p class="ja">新しい価値観に触れ、心を耕し、視野を広げる。</p></div>
+            <div class="pillar"><div class="t">③ Bring <span class="mk">more color</span> into our lives</div><p class="ja">自分の可能性を見つけ、自分だけの花を咲かせる。</p></div>
+          </div>
+          <div class="promise-card"><div class="t">Everyone is welcome here.</div><p>Wherever you come from and whatever your level, let's learn at your own pace and grow together.</p></div>
+        </div>
+        <div class="shot"><img src="img/mission.jpg" alt="My Mission graphic: Bloom as only we can"></div>
+      </div>
+      <nav class="explore" aria-label="Explore">
+        <a href="#about"><span class="fl" data-fl="mint"></span><span>About me<small>My story and background</small></span></a>
+        <a href="#themes"><span class="fl" data-fl="sky"></span><span>Themes<small>What we explore together</small></span></a>
+        <a href="#curriculum"><span class="fl" data-fl="yellow"></span><span>Curriculum<small>Courses and the kanji path</small></span></a>
+        <a href="#gallery"><span class="fl" data-fl="pink"></span><span>Art gallery<small>Draw what you love about Japan</small></span></a>
+      </nav>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="view" data-view="about" hidden>
+  <section class="bg-white">
+    <div class="wrap split">
+      <div class="shot"><img src="img/background.jpg" alt="Daisy's background: primary school teacher, middle school English teacher, Japanese language instructor at a US college"></div>
+      <div>
+        <div class="head" style="margin-bottom:22px"><h2>My background…</h2><p class="ja">日本の学校、アメリカの大学、そしてロンドンから。</p></div>
+        <div class="facts">
+          <div class="fact"><span class="ic" style="background:var(--mint-deep)">1</span><div><b>Primary school teacher</b><span>Taught at a Japanese international school in Hong Kong</span></div></div>
+          <div class="fact"><span class="ic" style="background:var(--sky-deep)">2</span><div><b>Middle school English teacher</b><span>Public junior high schools in Ehime, Japan</span></div></div>
+          <div class="fact"><span class="ic" style="background:var(--pink)">3</span><div><b>Japanese instructor at a US college</b><span>Wesleyan College, Georgia</span></div></div>
+        </div>
+        <p style="margin-top:22px">I hold Bachelor's degrees in <span class="mk g">Education</span> and <span class="mk g">Psychology</span>, and a Master's in <span class="mk g">Comparative Education</span> from UCL. I have devoted my life to seeking better education.</p>
+      </div>
+    </div>
+  </section>
+  <section class="bg-mint">
+    <div class="wrap">
+      <div class="head"><h2>Why I teach <span class="fl" data-fl="white"></span></h2><p class="ja">言葉が分かると、知らなかった世界が開かれる。</p></div>
+      <div class="split" style="align-items:start">
+        <div class="pillar"><div class="t">Language opened my world</div><p style="margin-top:6px">Learning English took me to university abroad, to friends from many cultures, and to chances I never imagined. I want everyone to feel that, through Japanese.</p></div>
+        <div class="pillar"><div class="t">Everyone blooms differently</div><p style="margin-top:6px">No two learners grow the same way. We learn at your pace, with lots of speaking practice and gentle corrections, so you can enjoy talking to people in Japanese.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- THEMES -->
+<div class="view" data-view="themes" hidden>
+  <section class="bg-sky">
+    <div class="wrap">
+      <div class="head"><h2>Five seeds I plant <span class="fl" data-fl="white"></span></h2><p class="ja">いっしょに学んでいく5つのテーマ</p></div>
+      <div class="themes">
+        <div class="theme"><div class="ic">🏫</div><h3>Real Japanese School Life</h3><p>School lunch, cleaning time, clubs and a teacher's day, from someone who taught in Japanese public schools.</p></div>
+        <div class="theme"><div class="ic">✏️</div><h3>Learn Japanese with Daisy</h3><p>Beginner grammar, what Duolingo leaves out, JLPT N5 and natural everyday expressions.</p></div>
+        <div class="theme"><div class="ic">🧠</div><h3>Learn Japanese Smarter</h3><p>Memory, habits, review and motivation, explained through psychology and learning science.</p></div>
+        <div class="theme"><div class="ic">🗾</div><h3>Japanese Culture &amp; Education</h3><p>Culture, society and schools seen through comparative education, strengths and challenges alike.</p></div>
+        <div class="theme"><div class="ic"><span class="fl" data-fl="white"></span></div><h3>Language, Life &amp; Growth</h3><p>How a new language opens doors to new people, places and possibilities.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CURRICULUM -->
+<div class="view" data-view="curriculum" hidden>
+  <section class="bg-mint">
+    <div class="wrap">
+      <div class="head"><h2>Lesson curriculum <span class="fl" data-fl="white"></span></h2><p class="ja">いっしょに学んでいくこと</p></div>
+      <div class="cur">
+        <div class="photo"><img src="img/suit.jpg" alt="Daisy at a desk, introducing the lessons"></div>
+        <div class="tracks">
+          <div class="track"><span class="lvl" style="background:var(--mint-deep)">Beginner</span><h3>Beginner &amp; Travel Japanese</h3><ul><li>Greetings, and when to be polite or casual</li><li>Ordering, shopping and asking the way</li><li>Phrases for the places you're visiting</li></ul></div>
+          <div class="track"><span class="lvl" style="background:var(--sky-deep)">JLPT</span><h3>JLPT N5 · N4</h3><ul><li>Core grammar with short, clear explanations</li><li>Lots of speaking practice with meaningful sentences</li><li>Kanji, vocabulary and listening, step by step</li></ul></div>
+          <div class="track"><span class="lvl" style="background:var(--pink)">All levels</span><h3>Free Talk</h3><ul><li>Chat about anime, food, travel and your life</li><li>Gentle corrections after you finish speaking</li><li>Find a natural rhythm instead of word-by-word speech</li></ul></div>
+        </div>
+      </div>
+      <div class="kanji-path">
+        <h3>JLPT N5 Kanji Path</h3>
+        <p class="sub">100 kanji in 20 lessons, four to seven characters at a time.</p>
+        <div class="kgrid" id="kgrid"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- GALLERY + DRAW -->
+<div class="view" data-view="gallery" hidden>
+  <section class="bg-sky">
+    <div class="wrap">
+      <div class="gal-head">
+        <div class="me"><img src="img/pink.jpg" alt="Daisy"></div>
+        <div><h2>What do you like about Japan?</h2><p class="ja">日本の好きなところ、イラストで教えてね！ Daisy checks each picture, then shares it here.</p></div>
+      </div>
+
+      <div id="galleryBox"><div class="empty"><b>The gallery is waiting for its first bloom</b>Send your picture to Daisy. Once she has checked it, it will appear here.</div></div>
+
+      <div class="panel" style="margin-top:40px">
+        <h3>Send your art <span class="fl" data-fl="yellow"></span></h3>
+        <p class="ja">絵や写真をDaisyに送ってね。Daisyが確認してから、ギャラリーに載せます。</p>
+        <div class="send">
+          <div>
+            <canvas id="canvas" width="800" height="600" aria-label="Drawing canvas"></canvas>
+            <div class="tools">
+              <div style="display:flex;gap:5px;flex-wrap:wrap" id="swatches"></div>
+              <span class="sep"></span>
+              <button class="tbtn" type="button" data-size="4" aria-pressed="false">Fine</button>
+              <button class="tbtn" type="button" data-size="10" aria-pressed="true">Medium</button>
+              <button class="tbtn" type="button" data-size="22" aria-pressed="false">Bold</button>
+              <span class="sep"></span>
+              <button class="tbtn" type="button" id="eraser" aria-pressed="false">Eraser</button>
+              <button class="tbtn" type="button" id="undo">Undo</button>
+              <button class="tbtn" type="button" id="clearBtn">Clear</button>
+            </div>
+          </div>
+          <div class="howto">
+            <ol>
+              <li><b>Draw here</b>, or use any picture or photo you made.</li>
+              <li><b>Save it.</b> <button class="btn ghost small" type="button" id="saveBtn">Save my drawing</button></li>
+              <li><b>Send it to Daisy</b> <span id="igLine">by Instagram DM</span>, with one sentence about what you love about Japan and your nickname · country.</li>
+            </ol>
+            <p class="status" id="status" role="status"></p>
+            <p class="note">Daisy checks every picture before it goes into the gallery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="bg-mint">
+  <div class="wrap">
+    <div class="me"><img src="img/square.jpg" alt="Daisy"></div>
+    <div>
+      <p class="promise">At Japanese with Daisy, we want to help you discover the world through Japanese, and bloom as only you can.</p>
+      <p class="tl">Learn Japanese. Cultivate Your Mind. Bloom as Only You Can.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+// ---------- Daisy mark (original five-petal design) ----------
+const FILL={white:"#ffffff",pink:"#f9c6d6",sky:"#cdeaf5",yellow:"#fbeea6",mint:"#d4ecd9"};
+function flower(c){
+  const f=FILL[c]||c;let out="",fill="";
+  // one joined silhouette: outline layer underneath, fill layer on top, so the petals read as a single shape
+  for(let i=0;i<5;i++){const a=(i*72-90)*Math.PI/180,x=(30+13.5*Math.cos(a)).toFixed(1),y=(30+13.5*Math.sin(a)).toFixed(1);
+    out+=`<circle cx="${x}" cy="${y}" r="13.5" fill="#9aa39d"/>`;fill+=`<circle cx="${x}" cy="${y}" r="12.3" fill="${f}"/>`;}
+  const pet=out+`<circle cx="30" cy="30" r="15" fill="${f}"/>`+fill;
+  return `<svg viewBox="0 0 60 60" aria-hidden="true">${pet}<circle cx="30" cy="30" r="9.5" fill="#f7e58a" stroke="#9aa39d" stroke-width="1.4"/><circle cx="27" cy="27" r="2.4" fill="#ffffff" opacity=".8"/></svg>`;
+}
+document.querySelectorAll(".fl[data-fl]").forEach(e=>e.innerHTML=flower(e.dataset.fl));
+let seed=7;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+const palettes={"bg-mint":["white","pink","sky","yellow"],"bg-cream":["white","pink","mint","sky"],"bg-sky":["white","pink","yellow","mint"],"bg-white":["mint","pink","sky","yellow"]};
+document.querySelectorAll("section,header.hero,footer").forEach(sec=>{
+  const key=Object.keys(palettes).find(k=>sec.classList.contains(k))||"bg-white";const pal=palettes[key];
+  const n=sec.classList.contains("hero")?9:6;
+  for(let i=0;i<n;i++){const d=document.createElement("div");const sz=Math.round(22+rnd()*46);
+    const left=i%2===0?rnd()*9:91-rnd()*9,top=6+rnd()*84;
+    d.className="deco"+(sz>50?" spin":"")+(i>3?" hide-sm":"");
+    d.style.cssText=`width:${sz}px;height:${sz}px;left:${left}%;top:${top}%;transform:rotate(${Math.round(rnd()*70)}deg);opacity:${(.75+rnd()*.25).toFixed(2)}`;
+    d.innerHTML=flower(pal[i%pal.length]);sec.appendChild(d);}
+});
+
+// ---------- pages ----------
+const views=[...document.querySelectorAll(".view")];
+function show(){
+  const name=(location.hash||"#home").slice(1);
+  const v=views.find(x=>x.dataset.view===name)||views[0];
+  views.forEach(x=>x.hidden=x!==v);
+  document.querySelectorAll("[data-link]").forEach(a=>a.toggleAttribute("aria-current",a.dataset.link===v.dataset.view)||a.setAttribute("aria-current","page"));
+  document.querySelectorAll("[data-link]").forEach(a=>{if(a.dataset.link===v.dataset.view)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",show);show();
+
+// ---------- kanji path ----------
+const L=[["Numbers 1–5","一二三四五"],["Numbers 6–10","六七八九十"],["Large Numbers & Money","百千万円"],["Days & Nature","日月火水木"],["Weekdays & Years","金土年今毎"],["Time Expressions","時分半午前後"],["People & Family","人男女子父母"],["Friends & Identity","友名何私"],["School & Learning","先生学校語"],["Books & Writing","本文字"],["Positions","上下中外間"],["Directions","左右東西南北"],["Countries & Nature","国山川田"],["Weather & Feelings","天気雨"],["Movement","行来帰入出乗"],["Communication","見聞話読書言"],["Daily Activities","食飲買休会立"],["Size & Qualities","大小高安長"],["Age, Quantity & Colors","新古多少白赤青"],["Everyday Objects","電車駅花"]];
+const kg=document.getElementById("kgrid");
+L.forEach((l,i)=>{const b=document.createElement("div");b.className="lesson";
+  b.innerHTML=`<div class="n">Lesson ${String(i+1).padStart(2,"0")}</div><div class="t"></div><div class="k" lang="ja"></div>`;
+  b.querySelector(".t").textContent=l[0];b.querySelector(".k").textContent=l[1];kg.appendChild(b);});
+
+// ---------- drawing ----------
+let dirty=false;
+const status=document.getElementById("status");
+function setStatus(m,err){status.textContent=m;status.classList.toggle("err",!!err);}
+const cv=document.getElementById("canvas"),ctx=cv.getContext("2d");
+const colors=["#55595a","#ef7fa8","#f7c9d6","#f7e58a","#8cc5a1","#8ccbe0","#a8744f","#e2504a"];
+let color=colors[0],size=10,erasing=false,drawing=false,last=null,history=[];
+function blank(){ctx.fillStyle="#ffffff";ctx.fillRect(0,0,cv.width,cv.height);}
+blank();
+const sw=document.getElementById("swatches");
+colors.forEach((c,i)=>{const b=document.createElement("button");b.type="button";b.className="swatch";b.style.background=c;b.setAttribute("aria-label","Color "+c);b.setAttribute("aria-pressed",i===0);
+  b.onclick=()=>{color=c;erasing=false;document.getElementById("eraser").setAttribute("aria-pressed","false");sw.querySelectorAll(".swatch").forEach(x=>x.setAttribute("aria-pressed",x===b));};sw.appendChild(b);});
+document.querySelectorAll("[data-size]").forEach(b=>b.onclick=()=>{size=+b.dataset.size;document.querySelectorAll("[data-size]").forEach(x=>x.setAttribute("aria-pressed",x===b));});
+document.getElementById("eraser").onclick=e=>{erasing=!erasing;e.currentTarget.setAttribute("aria-pressed",erasing);};
+document.getElementById("undo").onclick=()=>{if(history.length)ctx.putImageData(history.pop(),0,0);};
+document.getElementById("clearBtn").onclick=()=>{history.push(ctx.getImageData(0,0,cv.width,cv.height));blank();dirty=false;};
+function pos(e){const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)*cv.width/r.width,y:(e.clientY-r.top)*cv.height/r.height};}
+cv.addEventListener("pointerdown",e=>{cv.setPointerCapture(e.pointerId);if(history.length>30)history.shift();history.push(ctx.getImageData(0,0,cv.width,cv.height));drawing=true;last=pos(e);stroke(last);dirty=true;});
+cv.addEventListener("pointermove",e=>{if(!drawing)return;const p=pos(e);stroke(p);last=p;});
+["pointerup","pointercancel","pointerleave"].forEach(t=>cv.addEventListener(t,()=>{drawing=false;}));
+function stroke(p){ctx.strokeStyle=erasing?"#ffffff":color;ctx.lineWidth=erasing?size*2:size;ctx.lineCap="round";ctx.lineJoin="round";ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();}
+document.getElementById("saveBtn").onclick=()=>{
+  if(!dirty){setStatus("Draw something first.",true);return;}
+  cv.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="my-japan-drawing.jpg";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+    setStatus("Saved! Now send it to Daisy.");if(window.gtag)gtag("event","save_drawing");},"image/jpeg",.9);
+};
+if(window.SITE&&SITE.INSTAGRAM_URL){const l=document.getElementById("igLine");l.innerHTML="";const a=document.createElement("a");a.href=SITE.INSTAGRAM_URL;a.target="_blank";a.rel="noopener";a.textContent="by Instagram DM";l.appendChild(a);}
+
+// ---------- gallery (approved pictures listed in gallery.json) ----------
+fetch("gallery.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]).then(list=>{
+  const items=(Array.isArray(list)?list:[]).filter(x=>x&&x.file);
+  if(!items.length)return;
+  const box=document.getElementById("galleryBox");box.innerHTML="";
+  const grid=document.createElement("div");grid.className="gallery";
+  items.forEach(v=>{const fig=document.createElement("figure");fig.className="art";
+    const img=document.createElement("img");img.loading="lazy";img.src=v.file;img.alt=v.like?("Picture: "+v.like):"Learner picture";
+    const cap=document.createElement("figcaption");const q=document.createElement("p");q.className="q";q.textContent=v.like||"";
+    const who=document.createElement("div");who.className="who";const sp=document.createElement("span");sp.textContent=v.sign||"A Japanese learner";who.appendChild(sp);
+    cap.append(q,who);fig.append(img,cap);grid.appendChild(fig);});
+  box.appendChild(grid);
+}).catch(()=>{});
+// count page views per section in Analytics
+window.addEventListener("hashchange",()=>{if(window.gtag)gtag("event","page_view",{page_title:(location.hash||"#home").slice(1),page_location:location.href});});
+})();
+</script>
+</body>
+</html>
