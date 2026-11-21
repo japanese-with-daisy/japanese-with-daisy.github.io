@@ -328,31 +328,32 @@ footer .tl{margin-top:8px;font-family:var(--hand);font-weight:700;color:var(--pi
     <div class="wrap">
       <div class="gal-head">
         <div class="me"><img src="img/pink.jpg" alt="Daisy"></div>
-        <div><h2>What do you like about Japan?</h2><p class="ja">日本の好きなところ、イラストで教えてね！ Daisy checks each picture, then shares it here.</p></div>
+        <div><h2>What do you like about Japan?</h2><p class="ja">日本の好きなところ、イラストで教えてね！ Daisy checks each drawing, then shares it here.</p></div>
       </div>
 
-      <div id="galleryBox"><div class="empty"><b>The gallery is waiting for its first bloom</b>Send your picture to Daisy. Once she has checked it, it will appear here.</div></div>
+      <div id="galleryBox"><div class="empty"><b>The gallery is waiting for its first bloom</b>Send Daisy your drawing. Once she has checked it, it will appear here.</div></div>
 
       <div class="panel" style="margin-top:40px">
-        <h3>Send your picture <span class="fl" data-fl="yellow"></span></h3>
+        <h3>Send your drawing <span class="fl" data-fl="yellow"></span></h3>
         <div class="send">
           <div class="howto">
             <ol>
-              <li><b>Draw or photograph</b> something you love about Japan.</li>
-              <li><b>Save it</b> on your phone or computer as a JPEG or PNG.</li>
-              <li><b>Send it to Daisy</b> with the button below, together with your username and a sentence about your picture.</li>
+              <li><b>Draw</b> something you love about Japan &mdash; on paper, or on a phone or computer.</li>
+              <li><b>Save it</b> as a JPEG or PNG. A clear photo of a paper drawing is fine too.</li>
+              <li><b>Send it to Daisy</b> with the button below, together with your username and a sentence about your drawing.</li>
             </ol>
-            <p style="margin-top:14px"><a class="btn primary" id="formBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSea174PyWgPdLrtxAl5dPJVfvqqtE00i8eiWTNeXpv3E5wzCg/viewform" target="_blank" rel="noopener">Send your picture to Daisy</a></p>
-            <p class="note">The form opens in a new tab. You'll need to be signed in to a Google account to upload your picture.</p>
+            <p style="margin-top:14px"><a class="btn primary" id="formBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSea174PyWgPdLrtxAl5dPJVfvqqtE00i8eiWTNeXpv3E5wzCg/viewform" target="_blank" rel="noopener">Send your drawing to Daisy</a></p>
+            <p class="note">The form opens in a new tab. You'll need to be signed in to a Google account to upload your drawing. Drawings only, please — not photographs.</p>
           </div>
           <div class="consent" role="note" aria-label="Before you send">
             <b>Before you send <span class="fl" data-fl="pink"></span></b>
             <ul>
-              <li>When you send a picture to Daisy, it <b>may be shared in the Art gallery on this website</b>, together with your username and message.</li>
-              <li>Daisy checks every picture first. Not every picture will be shared.</li>
-              <li>Please send only <b>your own work</b>. Use a username, and don't include your address, school name or a photo of your face.</li>
+              <li>Please send a <b>drawing</b>, not a photograph.</li>
+              <li>When you send a drawing to Daisy, it <b>may be shared in the Art gallery on this website</b>, together with your username and message.</li>
+              <li>Daisy checks every drawing first. Not every drawing will be shared.</li>
+              <li>Please send only <b>your own work</b>. Use a username, and don't include your address, school name or your face.</li>
               <li><b>Under 18?</b> Please ask a parent or guardian for permission before you send.</li>
-              <li>Changed your mind? Send Daisy a message any time, and your picture will be taken down.</li>
+              <li>Changed your mind? Send Daisy a message any time, and your drawing will be taken down.</li>
             </ul>
           </div>
         </div>
@@ -462,7 +463,7 @@ fetch("gallery.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]).then(list=>{
   const box=document.getElementById("galleryBox");box.innerHTML="";
   const grid=document.createElement("div");grid.className="gallery";
   items.forEach(v=>{const fig=document.createElement("figure");fig.className="art";
-    const img=document.createElement("img");img.loading="lazy";img.src=v.file;img.alt=v.like?("Picture: "+v.like):"Learner picture";
+    const img=document.createElement("img");img.loading="lazy";img.src=v.file;img.alt=v.like?("Drawing: "+v.like):"Learner drawing";
     const cap=document.createElement("figcaption");const q=document.createElement("p");q.className="q";q.textContent=v.like||"";
     const who=document.createElement("div");who.className="who";const sp=document.createElement("span");sp.textContent=v.sign||"A Japanese learner";who.appendChild(sp);
     cap.append(q,who);fig.append(img,cap);grid.appendChild(fig);});
