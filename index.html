@@ -190,45 +190,8 @@ section>.wrap,header.hero>.wrap,footer>.wrap{position:relative;z-index:1}
 .panel{background:var(--white);border-radius:28px;padding:26px;box-shadow:0 10px 28px rgba(0,0,0,.06)}
 .panel h3{font-family:var(--hand);font-size:30px;color:var(--pencil);line-height:1.2}
 .panel .ja{font-family:var(--hand-ja);color:var(--pencil);font-size:14px}
-.send{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:26px;margin-top:20px;align-items:start}
+.send{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;margin-top:16px;align-items:start}
 @media (max-width:860px){.send{grid-template-columns:1fr}}
-.modes{display:inline-flex;background:var(--mint-2);border-radius:999px;padding:4px;gap:4px}
-.modes button{border:none;background:none;font:inherit;font-size:14px;font-weight:700;color:var(--mint-ink);padding:6px 16px;border-radius:999px;cursor:pointer}
-.modes button[aria-pressed="true"]{background:var(--white);box-shadow:0 2px 6px rgba(0,0,0,.08)}
-.drop{margin-top:12px;border:2px dashed var(--mint-deep);border-radius:20px;aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:18px;background:var(--mint-2);cursor:pointer;color:var(--mint-ink);position:relative;overflow:hidden}
-.drop.over{background:var(--mint)}
-.drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
-.drop .hint b{display:block;font-family:var(--hand);font-size:24px}
-.drop .hint span{font-size:13px;color:var(--pencil)}
-#canvas{width:100%;aspect-ratio:4/3;border-radius:16px;background:#ffffff;touch-action:none;cursor:crosshair;box-shadow:inset 0 0 0 2px var(--mint-deep);margin-top:0;display:block}
-.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
-.swatch{width:26px;height:26px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
-.swatch[aria-pressed="true"]{box-shadow:0 0 0 2.5px var(--pink)}
-.tools .sep{width:1px;height:22px;background:var(--line)}
-.tbtn{border:1.5px solid var(--line);background:var(--white);color:var(--ink);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
-.tbtn[aria-pressed="true"]{background:var(--mint-deep);color:var(--white);border-color:var(--mint-deep)}
-.form{display:grid;gap:10px}
-.form label{font-size:14px;font-weight:700}
-.form input,.form textarea{width:100%;font:inherit;font-size:15px;padding:10px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--white);color:var(--ink)}
-.form textarea{min-height:90px;resize:vertical}
-.ideas{display:flex;flex-wrap:wrap;gap:6px}
-.ideas button{font:inherit;font-size:13px;border:1.5px dashed var(--pink);background:var(--white);color:var(--pink);border-radius:999px;padding:3px 11px;cursor:pointer}
-.status{font-size:14px;min-height:1.5em;color:var(--mint-ink)}
-.status.err{color:var(--danger)}
-.mine{margin-top:22px;display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center;background:var(--cream);border-radius:20px;padding:14px}
-.mine img{width:96px;height:96px;object-fit:cover;border-radius:14px;background:#fff}
-.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px}
-.pill.pending{background:var(--yellow);color:#6b5a12}
-.pill.approved{background:var(--mint);color:var(--mint-ink)}
-.pill.declined{background:var(--blush);color:#8a3550}
-
-.review{background:var(--white);border:2px solid var(--yellow);border-radius:28px;padding:22px 24px;margin-bottom:36px}
-.review .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.review h3{font-family:var(--hand);font-size:28px;color:var(--ink)}
-.review .only{font-size:13px;color:var(--pencil)}
-.queue{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:16px}
-.queue .art{box-shadow:none;border:1.5px solid var(--line)}
-.queue .acts{display:flex;gap:8px;margin-top:10px}
 
 .howto ol{margin:0;padding-left:22px;display:grid;gap:14px}.howto li{padding-left:4px}.howto .btn{margin-top:6px}.note{font-size:13px;color:var(--pencil);margin-top:6px}
 .consent{margin-top:18px;background:var(--cream);border:2px dashed var(--pink);border-radius:20px;padding:16px 18px;font-size:14px}.consent>b{font-family:var(--hand);font-size:20px;color:var(--pink);font-weight:600}.consent ul{margin:8px 0 0;padding-left:20px;display:grid;gap:6px}.consent .ja{margin-top:10px;font-size:13px;color:var(--pencil);font-family:var(--hand-ja)}
@@ -371,40 +334,26 @@ footer .tl{margin-top:8px;font-family:var(--hand);font-weight:700;color:var(--pi
       <div id="galleryBox"><div class="empty"><b>The gallery is waiting for its first bloom</b>Send your picture to Daisy. Once she has checked it, it will appear here.</div></div>
 
       <div class="panel" style="margin-top:40px">
-        <h3>Send your art <span class="fl" data-fl="yellow"></span></h3>
-        <p class="ja">絵や写真をDaisyに送ってね。Daisyが確認してから、ギャラリーに載せます。</p>
+        <h3>Send your picture <span class="fl" data-fl="yellow"></span></h3>
         <div class="send">
-          <div>
-            <canvas id="canvas" width="800" height="600" aria-label="Drawing canvas"></canvas>
-            <div class="tools">
-              <div style="display:flex;gap:5px;flex-wrap:wrap" id="swatches"></div>
-              <span class="sep"></span>
-              <button class="tbtn" type="button" data-size="4" aria-pressed="false">Fine</button>
-              <button class="tbtn" type="button" data-size="10" aria-pressed="true">Medium</button>
-              <button class="tbtn" type="button" data-size="22" aria-pressed="false">Bold</button>
-              <span class="sep"></span>
-              <button class="tbtn" type="button" id="eraser" aria-pressed="false">Eraser</button>
-              <button class="tbtn" type="button" id="undo">Undo</button>
-              <button class="tbtn" type="button" id="clearBtn">Clear</button>
-            </div>
-          </div>
           <div class="howto">
             <ol>
-              <li><b>Draw here</b>, or use any picture or photo you made.</li>
-              <li><b>Save it.</b> <button class="btn ghost small" type="button" id="saveBtn">Save my drawing</button></li>
-              <li><b>Send it to Daisy</b> <span id="igLine">by Instagram DM</span>, with one sentence about what you love about Japan and your nickname · country. Please read the note below first.</li>
+              <li><b>Draw or photograph</b> something you love about Japan.</li>
+              <li><b>Save it</b> on your phone or computer as a JPEG or PNG.</li>
+              <li><b>Send it to Daisy</b> with the button below, together with your username and a sentence about your picture.</li>
             </ol>
-            <p class="status" id="status" role="status"></p>
-            <div class="consent" role="note" aria-label="Before you send">
-              <b>Before you send <span class="fl" data-fl="pink"></span></b>
-              <ul>
-                <li>When you send a picture to Daisy, it <b>may be shared in the Art gallery on this website</b>, together with your sentence and nickname.</li>
-                <li>Daisy checks every picture first. Not every picture will be shared.</li>
-                <li>Please send only <b>your own work</b>. Use a nickname, and don't include your full name, address, school name or a photo of your face.</li>
-                <li><b>Under 18?</b> Please ask a parent or guardian for permission before you send.</li>
-                <li>Changed your mind? Send Daisy a message any time, and your picture will be taken down.</li>
-              </ul>
-            </div>
+            <p style="margin-top:14px"><a class="btn primary" id="formBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSea174PyWgPdLrtxAl5dPJVfvqqtE00i8eiWTNeXpv3E5wzCg/viewform" target="_blank" rel="noopener">Send your picture to Daisy</a></p>
+            <p class="note">The form opens in a new tab. You'll need to be signed in to a Google account to upload your picture.</p>
+          </div>
+          <div class="consent" role="note" aria-label="Before you send">
+            <b>Before you send <span class="fl" data-fl="pink"></span></b>
+            <ul>
+              <li>When you send a picture to Daisy, it <b>may be shared in the Art gallery on this website</b>, together with your username and message.</li>
+              <li>Daisy checks every picture first. Not every picture will be shared.</li>
+              <li>Please send only <b>your own work</b>. Use a username, and don't include your address, school name or a photo of your face.</li>
+              <li><b>Under 18?</b> Please ask a parent or guardian for permission before you send.</li>
+              <li>Changed your mind? Send Daisy a message any time, and your picture will be taken down.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -505,34 +454,6 @@ const kg=document.getElementById("kgrid");
 L.forEach((l,i)=>{const b=document.createElement("div");b.className="lesson";
   b.innerHTML=`<div class="n">Lesson ${String(i+1).padStart(2,"0")}</div><div class="t"></div><div class="k" lang="ja"></div>`;
   b.querySelector(".t").textContent=l[0];b.querySelector(".k").textContent=l[1];kg.appendChild(b);});
-
-// ---------- drawing ----------
-let dirty=false;
-const status=document.getElementById("status");
-function setStatus(m,err){status.textContent=m;status.classList.toggle("err",!!err);}
-const cv=document.getElementById("canvas"),ctx=cv.getContext("2d");
-const colors=["#55595a","#ef7fa8","#f7c9d6","#f7e58a","#8cc5a1","#8ccbe0","#a8744f","#e2504a"];
-let color=colors[0],size=10,erasing=false,drawing=false,last=null,history=[];
-function blank(){ctx.fillStyle="#ffffff";ctx.fillRect(0,0,cv.width,cv.height);}
-blank();
-const sw=document.getElementById("swatches");
-colors.forEach((c,i)=>{const b=document.createElement("button");b.type="button";b.className="swatch";b.style.background=c;b.setAttribute("aria-label","Color "+c);b.setAttribute("aria-pressed",i===0);
-  b.onclick=()=>{color=c;erasing=false;document.getElementById("eraser").setAttribute("aria-pressed","false");sw.querySelectorAll(".swatch").forEach(x=>x.setAttribute("aria-pressed",x===b));};sw.appendChild(b);});
-document.querySelectorAll("[data-size]").forEach(b=>b.onclick=()=>{size=+b.dataset.size;document.querySelectorAll("[data-size]").forEach(x=>x.setAttribute("aria-pressed",x===b));});
-document.getElementById("eraser").onclick=e=>{erasing=!erasing;e.currentTarget.setAttribute("aria-pressed",erasing);};
-document.getElementById("undo").onclick=()=>{if(history.length)ctx.putImageData(history.pop(),0,0);};
-document.getElementById("clearBtn").onclick=()=>{history.push(ctx.getImageData(0,0,cv.width,cv.height));blank();dirty=false;};
-function pos(e){const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)*cv.width/r.width,y:(e.clientY-r.top)*cv.height/r.height};}
-cv.addEventListener("pointerdown",e=>{cv.setPointerCapture(e.pointerId);if(history.length>30)history.shift();history.push(ctx.getImageData(0,0,cv.width,cv.height));drawing=true;last=pos(e);stroke(last);dirty=true;});
-cv.addEventListener("pointermove",e=>{if(!drawing)return;const p=pos(e);stroke(p);last=p;});
-["pointerup","pointercancel","pointerleave"].forEach(t=>cv.addEventListener(t,()=>{drawing=false;}));
-function stroke(p){ctx.strokeStyle=erasing?"#ffffff":color;ctx.lineWidth=erasing?size*2:size;ctx.lineCap="round";ctx.lineJoin="round";ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();}
-document.getElementById("saveBtn").onclick=()=>{
-  if(!dirty){setStatus("Draw something first.",true);return;}
-  cv.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="my-japan-drawing.jpg";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-    setStatus("Saved! Now send it to Daisy.");if(window.gtag)gtag("event","save_drawing");},"image/jpeg",.9);
-};
-if(window.SITE&&SITE.INSTAGRAM_URL){const l=document.getElementById("igLine");l.innerHTML="";const a=document.createElement("a");a.href=SITE.INSTAGRAM_URL;a.target="_blank";a.rel="noopener";a.textContent="by Instagram DM";l.appendChild(a);}
 
 // ---------- gallery (approved pictures listed in gallery.json) ----------
 fetch("gallery.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]).then(list=>{
