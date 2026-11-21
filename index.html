@@ -462,18 +462,17 @@ function placeDecos(){
     const key=Object.keys(palettes).find(k=>sec.classList.contains(k))||"bg-white";const pal=palettes[key];
     const obs=obstacles(sec,base),placed=[];
     const W=base.width,H=base.height;
-    const want=Math.max(10,Math.min(phone?26:34,Math.round(W*H/(phone?13000:28000))));
-    const minS=phone?16:20,maxS=phone?34:52;
+    const want=Math.max(5,Math.min(phone?10:14,Math.round(W*H/(phone?30000:70000))));
+    const SIZE=phone?34:52;
     for(let i=0;i<want;i++){
       for(let t=0;t<120;t++){
-        const s=Math.round(maxS-(maxS-minS)*Math.min(1,t/60)-rnd()*(phone?8:14));
-        const sz=Math.max(minS,s),x=4+rnd()*(W-sz-8),y=4+rnd()*(H-sz-8);
+        const sz=SIZE,x=4+rnd()*(W-sz-8),y=4+rnd()*(H-sz-8);
         const hit=obs.some(o=>x<o.x+o.w&&x+sz>o.x&&y<o.y+o.h&&y+sz>o.y)
           ||placed.some(p=>{const dx=(x+sz/2)-(p.x+p.s/2),dy=(y+sz/2)-(p.y+p.s/2);return Math.hypot(dx,dy)<(sz+p.s)/2+GAP_FLOWER;});
         if(hit)continue;
         placed.push({x,y,s:sz});
         const d=document.createElement("div");
-        d.className="deco"+(sz>44?" spin":"");
+        d.className="deco spin";
         d.style.cssText=`width:${sz}px;height:${sz}px;left:${x.toFixed(1)}px;top:${y.toFixed(1)}px;transform:rotate(${Math.round(rnd()*70)}deg);opacity:${(.8+rnd()*.2).toFixed(2)}`;
         d.innerHTML=flower(pal[placed.length%pal.length]);sec.appendChild(d);
         break;
