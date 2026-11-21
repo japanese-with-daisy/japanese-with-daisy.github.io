@@ -142,7 +142,7 @@ section>.wrap,header.hero>.wrap,footer>.wrap{position:relative;z-index:1}
 .fact span{color:var(--pencil);font-size:14px}
 
 /* themes */
-.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
 .theme{background:var(--white);border-radius:24px;padding:22px 20px;min-width:0}
 .theme .ic{font-size:28px;line-height:1}
 .theme h3{font-weight:700;font-size:16px;margin-top:10px;line-height:1.4}
@@ -327,11 +327,11 @@ footer .tl{margin-top:8px;font-family:var(--hand);font-weight:700;color:var(--pi
     <div class="wrap">
       <div class="head"><h2>Five seeds I plant <span class="fl" data-fl="white"></span></h2><p class="ja">いっしょに学んでいく5つのテーマ</p></div>
       <div class="themes">
-        <div class="theme"><div class="ic">🏫</div><h3>Real Japanese School Life</h3><p>School lunch, cleaning time, clubs and a teacher's day, from someone who taught in Japanese public schools.</p></div>
         <div class="theme"><div class="ic">✏️</div><h3>Learn Japanese with Daisy</h3><p>Beginner grammar, what Duolingo leaves out, JLPT N5 and natural everyday expressions.</p></div>
         <div class="theme"><div class="ic">🧠</div><h3>Learn Japanese Smarter</h3><p>Memory, habits, review and motivation, explained through psychology and learning science.</p></div>
         <div class="theme"><div class="ic">🗾</div><h3>Japanese Culture &amp; Education</h3><p>Culture, society and schools seen through comparative education, strengths and challenges alike.</p></div>
         <div class="theme"><div class="ic"><span class="fl" data-fl="white"></span></div><h3>Language, Life &amp; Growth</h3><p>How a new language opens doors to new people, places and possibilities.</p></div>
+        <div class="theme"><div class="ic">🏫</div><h3>Real Japanese School Life</h3><p>School lunch, cleaning time, clubs and a teacher's day, from someone who taught in Japanese public schools.</p></div>
       </div>
     </div>
   </section>
@@ -436,17 +436,56 @@ function flower(c){
   return `<svg viewBox="0 0 60 60" aria-hidden="true">${pet}<circle cx="30" cy="30" r="9.5" fill="#f7e58a" stroke="#9aa39d" stroke-width="1.4"/><circle cx="27" cy="27" r="2.4" fill="#ffffff" opacity=".8"/></svg>`;
 }
 document.querySelectorAll(".fl[data-fl]").forEach(e=>e.innerHTML=flower(e.dataset.fl));
-let seed=7;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+// ---------- scattered daisies: placed only in empty space, never on top of text, pictures or each other ----------
 const palettes={"bg-mint":["white","pink","sky","yellow"],"bg-cream":["white","pink","mint","sky"],"bg-sky":["white","pink","yellow","mint"],"bg-white":["mint","pink","sky","yellow"]};
-document.querySelectorAll("section,header.hero,footer").forEach(sec=>{
-  const key=Object.keys(palettes).find(k=>sec.classList.contains(k))||"bg-white";const pal=palettes[key];
-  const n=sec.classList.contains("hero")?9:6;
-  for(let i=0;i<n;i++){const d=document.createElement("div");const sz=Math.round(22+rnd()*46);
-    const left=i%2===0?rnd()*9:91-rnd()*9,top=6+rnd()*84;
-    d.className="deco"+(sz>50?" spin":"")+(i>3?" hide-sm":"");
-    d.style.cssText=`width:${sz}px;height:${sz}px;left:${left}%;top:${top}%;transform:rotate(${Math.round(rnd()*70)}deg);opacity:${(.75+rnd()*.25).toFixed(2)}`;
-    d.innerHTML=flower(pal[i%pal.length]);sec.appendChild(d);}
-});
+const GAP_CONTENT=10, GAP_FLOWER=8;
+function obstacles(sec,base){
+  const out=[];
+  sec.querySelectorAll(".wrap *").forEach(el=>{
+    if(el.closest(".deco"))return;
+    const r=el.getBoundingClientRect();if(!r.width||!r.height)return;
+    const cs=getComputedStyle(el);if(cs.visibility==="hidden")return;
+    const hasText=[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim());
+    const boxy=cs.backgroundColor!=="rgba(0, 0, 0, 0)"||parseFloat(cs.borderTopWidth)>0||cs.boxShadow!=="none"||cs.backgroundImage!=="none";
+    if(hasText||boxy||/^(IMG|svg|SVG|CANVAS|BUTTON|INPUT|TEXTAREA|SELECT|LI)$/.test(el.tagName))
+      out.push({x:r.left-base.left-GAP_CONTENT,y:r.top-base.top-GAP_CONTENT,w:r.width+GAP_CONTENT*2,h:r.height+GAP_CONTENT*2});
+  });
+  return out;
+}
+function placeDecos(){
+  const phone=window.innerWidth<700;
+  document.querySelectorAll("section,header.hero,footer").forEach((sec,si)=>{
+    sec.querySelectorAll(":scope > .deco").forEach(d=>d.remove());
+    const base=sec.getBoundingClientRect();
+    if(!base.width||!base.height)return;
+    let seed=17+si*131;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+    const key=Object.keys(palettes).find(k=>sec.classList.contains(k))||"bg-white";const pal=palettes[key];
+    const obs=obstacles(sec,base),placed=[];
+    const W=base.width,H=base.height;
+    const want=Math.max(10,Math.min(phone?26:34,Math.round(W*H/(phone?13000:28000))));
+    const minS=phone?16:20,maxS=phone?34:52;
+    for(let i=0;i<want;i++){
+      for(let t=0;t<120;t++){
+        const s=Math.round(maxS-(maxS-minS)*Math.min(1,t/60)-rnd()*(phone?8:14));
+        const sz=Math.max(minS,s),x=4+rnd()*(W-sz-8),y=4+rnd()*(H-sz-8);
+        const hit=obs.some(o=>x<o.x+o.w&&x+sz>o.x&&y<o.y+o.h&&y+sz>o.y)
+          ||placed.some(p=>{const dx=(x+sz/2)-(p.x+p.s/2),dy=(y+sz/2)-(p.y+p.s/2);return Math.hypot(dx,dy)<(sz+p.s)/2+GAP_FLOWER;});
+        if(hit)continue;
+        placed.push({x,y,s:sz});
+        const d=document.createElement("div");
+        d.className="deco"+(sz>44?" spin":"");
+        d.style.cssText=`width:${sz}px;height:${sz}px;left:${x.toFixed(1)}px;top:${y.toFixed(1)}px;transform:rotate(${Math.round(rnd()*70)}deg);opacity:${(.8+rnd()*.2).toFixed(2)}`;
+        d.innerHTML=flower(pal[placed.length%pal.length]);sec.appendChild(d);
+        break;
+      }
+    }
+  });
+}
+let decoTimer=null;
+function scheduleDecos(){clearTimeout(decoTimer);decoTimer=setTimeout(()=>requestAnimationFrame(placeDecos),120);}
+window.addEventListener("resize",scheduleDecos);
+window.addEventListener("load",scheduleDecos);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(scheduleDecos);
 
 // ---------- pages ----------
 const views=[...document.querySelectorAll(".view")];
@@ -457,6 +496,7 @@ function show(){
   document.querySelectorAll("[data-link]").forEach(a=>a.toggleAttribute("aria-current",a.dataset.link===v.dataset.view)||a.setAttribute("aria-current","page"));
   document.querySelectorAll("[data-link]").forEach(a=>{if(a.dataset.link===v.dataset.view)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
   window.scrollTo(0,0);
+  scheduleDecos();
 }
 window.addEventListener("hashchange",show);show();
 
@@ -507,6 +547,8 @@ fetch("gallery.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]).then(list=>{
     const who=document.createElement("div");who.className="who";const sp=document.createElement("span");sp.textContent=v.sign||"A Japanese learner";who.appendChild(sp);
     cap.append(q,who);fig.append(img,cap);grid.appendChild(fig);});
   box.appendChild(grid);
+  grid.querySelectorAll("img").forEach(i=>i.addEventListener("load",scheduleDecos));
+  scheduleDecos();
 }).catch(()=>{});
 // count page views per section in Analytics
 window.addEventListener("hashchange",()=>{if(window.gtag)gtag("event","page_view",{page_title:(location.hash||"#home").slice(1),page_location:location.href});});
