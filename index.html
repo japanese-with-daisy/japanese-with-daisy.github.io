@@ -14,13 +14,17 @@ window.SITE = {
   GA_ID: "G-MHLNJT8THF",        // Google Analytics ID, e.g. "G-ABC123XYZ". Leave empty to turn analytics off.
   INSTAGRAM_URL: ""   // e.g. "https://www.instagram.com/your_account/"
 };
-if (window.SITE.GA_ID) {
+/* Google Analytics loads only after the visitor clicks "Accept" in the cookie banner. */
+window.SITE.CONSENT_KEY = "jwd-cookie-consent";
+window.SITE.getConsent = function(){ try { return localStorage.getItem(window.SITE.CONSENT_KEY); } catch(e) { return null; } };
+window.SITE.loadAnalytics = function(){
+  if (!window.SITE.GA_ID || window.SITE._gaLoaded) return;
+  window.SITE._gaLoaded = true;
   var g=document.createElement("script");g.async=true;g.src="https://www.googletagmanager.com/gtag/js?id="+window.SITE.GA_ID;document.head.appendChild(g);
   window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag("js",new Date());gtag("config",window.SITE.GA_ID);
-}
+};
+if (window.SITE.getConsent() === "granted") window.SITE.loadAnalytics();
 </script>
-</body>
-</html>
 <title>Japanese with Daisy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
@@ -196,6 +200,14 @@ section>.wrap,header.hero>.wrap,footer>.wrap{position:relative;z-index:1}
 .howto ol{margin:0;padding-left:22px;display:grid;gap:14px}.howto li{padding-left:4px}.howto .btn{margin-top:6px}.note{font-size:13px;color:var(--pencil);margin-top:6px}
 .consent{margin-top:18px;background:var(--cream);border:2px dashed var(--pink);border-radius:20px;padding:16px 18px;font-size:14px}.consent>b{font-family:var(--hand);font-size:20px;color:var(--pink);font-weight:600}.consent ul{margin:8px 0 0;padding-left:20px;display:grid;gap:6px}.consent .ja{margin-top:10px;font-size:13px;color:var(--pencil);font-family:var(--hand-ja)}
 footer{padding-block:48px}
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;max-width:560px;margin-inline:auto;background:var(--white);border:2px dashed var(--pink);border-radius:20px;padding:16px 18px;box-shadow:0 8px 28px rgba(76,82,78,.18);font-size:14px;color:var(--ink);line-height:1.55}
+.cookie-banner b{font-family:var(--hand);font-size:19px;color:var(--pink);font-weight:600}
+.cookie-banner p{margin:6px 0 0}.cookie-banner .ja{font-family:var(--hand-ja);font-size:13px;color:var(--pencil)}
+.cookie-banner .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.cookie-banner button{font:600 15px var(--hand);border-radius:999px;padding:9px 18px;cursor:pointer;border:2px solid var(--pink)}
+.cookie-banner .yes{background:var(--pink);color:var(--white)}.cookie-banner .no{background:var(--white);color:var(--pink)}
+.cookie-banner button:focus-visible,.cookie-link:focus-visible{outline:3px solid var(--sky-deep);outline-offset:2px}
+.cookie-link{background:none;border:0;padding:0;margin-top:10px;font:inherit;font-size:13px;color:var(--pencil);text-decoration:underline;cursor:pointer}
 footer .wrap{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
 footer .me{width:110px;height:110px;border-radius:50%;overflow:hidden;border:5px solid var(--white)}
 footer .me img{width:100%;height:100%;object-fit:cover}
@@ -369,6 +381,7 @@ footer .tl{margin-top:8px;font-family:var(--hand);font-weight:700;color:var(--pi
     <div>
       <p class="promise">At Japanese with Daisy, we want to help you discover the world through Japanese, and bloom as only you can.</p>
       <p class="tl">Learn Japanese. Cultivate Your Mind. Bloom as Only You Can.</p>
+      <button type="button" class="cookie-link" id="cookieSettings">Cookie settings / クッキー設定</button>
     </div>
   </div>
 </footer>
@@ -473,6 +486,39 @@ fetch("gallery.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]).then(list=>{
 }).catch(()=>{});
 // count page views per section in Analytics
 window.addEventListener("hashchange",()=>{if(window.gtag)gtag("event","page_view",{page_title:(location.hash||"#home").slice(1),page_location:location.href});});
+})();
+</script>
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieTitle" aria-describedby="cookieText" hidden>
+  <b id="cookieTitle">Cookies 🍪</b>
+  <p id="cookieText">With your OK, this site uses Google Analytics cookies to count visits and see which pages are read, so Daisy can make the lessons better. Nothing is collected unless you click “Accept”.</p>
+  <p class="ja" lang="ja">同意いただいた場合のみ、Google Analytics のクッキーで訪問数や読まれたページを集計します。「Accept」を押さない限り、何も収集しません。</p>
+  <div class="row">
+    <button type="button" class="yes" id="cookieAccept">Accept</button>
+    <button type="button" class="no" id="cookieReject">Reject</button>
+  </div>
+</div>
+<script>
+(function(){
+  var S=window.SITE, box=document.getElementById("cookieBanner");
+  if(!S.GA_ID){ var l=document.getElementById("cookieSettings"); if(l) l.hidden=true; return; }
+  function save(v){ try{ localStorage.setItem(S.CONSENT_KEY,v); }catch(e){} }
+  function clearGaCookies(){
+    document.cookie.split(";").forEach(function(c){
+      var n=c.split("=")[0].trim();
+      if(n.indexOf("_ga")===0){
+        var parts=location.hostname.split("."), d;
+        document.cookie=n+"=; Max-Age=0; path=/";
+        for(var i=0;i<parts.length-1;i++){ d=parts.slice(i).join("."); document.cookie=n+"=; Max-Age=0; path=/; domain=."+d; }
+      }
+    });
+  }
+  document.getElementById("cookieAccept").addEventListener("click",function(){ save("granted"); box.hidden=true; S.loadAnalytics(); });
+  document.getElementById("cookieReject").addEventListener("click",function(){
+    var wasOn=S._gaLoaded; save("denied"); box.hidden=true; clearGaCookies();
+    if(wasOn) location.reload(); // stop the already-loaded Analytics script
+  });
+  document.getElementById("cookieSettings").addEventListener("click",function(){ box.hidden=false; document.getElementById("cookieAccept").focus(); });
+  if(!S.getConsent()) box.hidden=false;
 })();
 </script>
 </body>
